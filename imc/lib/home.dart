@@ -9,23 +9,20 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       appBar: AppBar(
         title: const Text('Calculadora de IMC'),
         centerTitle: true,
         backgroundColor: Colors.blue.shade400,
         actions: [
           IconButton(
-              onPressed: controller.resetField, icon: Icon(Icons.refresh))
+              onPressed: controller.resetField, icon: const Icon(Icons.refresh))
         ],
       ),
-      body: Padding(padding: const EdgeInsets.only(top: 50),
-        child: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
         child: Form(
           key: controller.formKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Icon(
@@ -62,8 +59,7 @@ class HomePage extends GetView<HomeController> {
                 ),
                 child: SizedBox(
                   height: 50,
-                  child: 
-                    ElevatedButton(
+                  child: ElevatedButton(
                     onPressed: () {
                       if (controller.formKey.currentState!.validate()) {
                         controller.calculate();
@@ -92,10 +88,6 @@ class HomePage extends GetView<HomeController> {
           ),
         ),
       ),
-      
-      ),
-      
-      
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue.shade400,
         onPressed: () {
@@ -103,7 +95,7 @@ class HomePage extends GetView<HomeController> {
             Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
           );
         },
-        child: Icon( Get.isDarkMode ? Icons.dark_mode : Icons.light_mode),
+        child: Icon(Get.isDarkMode ? Icons.dark_mode : Icons.light_mode),
       ),
     );
   }
